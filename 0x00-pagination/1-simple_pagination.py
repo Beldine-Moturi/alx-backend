@@ -30,11 +30,11 @@ class Server:
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         """returns indexes of a page"""
 
-        assert (type(page) == int and type(page_size) == int), "Values must be integers!"
+        assert (type(page) == int and type(page_size) == int),\
+            "Values must be integers!"
         assert (page > 0 and page_size > 0), "Values must be greater than 0"
 
         start, end = index_range(page, page_size)
         if end > len(self.dataset()):
             return []
         return self.dataset()[start:end]
-
