@@ -42,19 +42,14 @@ class Server:
     def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict:
         """returns page indexes for a page"""
 
-        dataset = self.dataset()
+        dataset_size = len(self.dataset())
         data = self.get_page(page, page_size)
-        total_pages = len(dataset) / 10
-        if (len(dataset) % 10):
+        total_pages = dataset_size / page_size
+        if (dataset_size % page_size):
             total_pages += 1
-        if page == 1:
-            prev_page = None
-        else:
-            prev_page = page - 1
-        if page == total_pages:
-            next_page = None
-        else:
-            next_page = page + 1
+
+        prev_page = page - 1 if page > 1 else None
+        next_page = page + 1 if page < total_pages else None
 
         return {
             "page_size": page_size,
