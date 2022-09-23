@@ -49,7 +49,7 @@ class Server:
             total_pages += 1
 
         prev_page = page - 1 if page > 1 else None
-        next_page = page + 1 if page + 1 < total_pages else None
+        next_page = page + 1 if page + 1 < dataset_size else None
 
         return {
             "page_size": page_size,
