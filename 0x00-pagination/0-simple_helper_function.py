@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Defines a helper function for indexing"""
 
+
 def index_range(page, page_size):
     """returns start and end indexes of rows for a page"""
 
