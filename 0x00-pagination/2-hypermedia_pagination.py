@@ -40,21 +40,19 @@ class Server:
         return self.dataset()[start:end]
 
     def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict:
-        """ Hypermedia generator """
-        assert type(page) == int
-        assert type(page_size) == int
-        assert page > 0
-        assert page_size > 0
-        if self.__dataset:
-            size = len(self.__dataset)
-        else:
-            size = 0
-        dic = {
-            'page_size': page_size,
-            'page': page,
-            'data': self.get_page(page, page_size),
-            'next_page': page + 1 if page + 1 <= size else None,
-            'prev_page': page - 1 if page > 1 else None,
-            'total_pages': math.ceil(size / page_size),
+        """returns page indexes for a page"""
+
+        dataset_size = len(self.dataset())
+        data = self.get_page(page, page_size)
+        total_pages = math.ceil(dataset_size / page_size)
+        prev_page = page - 1 if page > 1 else None
+        next_page = page + 1 if page + 1 <= dataset_size else None
+
+        return {
+            "page_size": page_size,
+            "page": page,
+            "data": data,
+            "next_page": next_page,
+            "prev_page": prev_page,
+            "total_pages": total_pages
         }
-        return dic
