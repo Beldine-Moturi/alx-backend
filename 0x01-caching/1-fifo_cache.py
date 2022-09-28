@@ -15,3 +15,8 @@ class FIFOCache(BaseCaching):
                 first_item = next(iter(self.cache_data))
                 self.cache_data.pop(first_item)
                 print(f"DISCARD: {first_item}")
+
+    def get(self, key):
+        """Gets an item from the cache"""
+
+        super().get()
