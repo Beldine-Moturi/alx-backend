@@ -19,4 +19,5 @@ class FIFOCache(BaseCaching):
     def get(self, key):
         """Gets an item from the cache"""
 
-        super().get()
+        item = self.cache_data.get(key)
+        return item
