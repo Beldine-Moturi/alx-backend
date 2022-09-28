@@ -14,3 +14,4 @@ class FIFOCache(BaseCaching):
             if len(self.cache_data) > self.MAX_ITEMS:
                 first_item = next(iter(self.cache_data))
                 self.cache_data.pop(first_item)
+                print(f"DISCARD: {first_item}")
