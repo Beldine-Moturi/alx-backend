@@ -16,4 +16,4 @@ class BasicCache(BaseCaching):
         """Gets an item from the chache"""
 
         item = self.cache_data.get(key)
-        return key
+        return item
