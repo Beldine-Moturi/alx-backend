@@ -3,6 +3,7 @@
 from flask import Flask
 from flask import request
 from flask_babel import Babel
+from flask_babel import _
 from flask import render_template
 
 app = Flask(__name__)
